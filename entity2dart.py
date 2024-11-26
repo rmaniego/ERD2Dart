@@ -137,7 +137,7 @@ def attributes_to_dart(entity, attributes, destination):
     name = convert_to_snake_case(entity).strip()
     
     tables = ", ".join(attributes["table"])
-    print(f"\nCREATE TABLE {name} ({tables});")
+    print(f"\n\t\tawait db.execute(\n\t\t\t\"CREATE TABLE {name} ({tables})\",\n\t\t);")
     
     with open(f"{destination}/{name}.dart", mode="w+", encoding="utf-8") as file:
         file.write(dart_data)
