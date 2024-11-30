@@ -142,10 +142,50 @@ def attributes_to_dart(entity, attributes, destination):
     with open(f"{destination}/{name}.dart", mode="w+", encoding="utf-8") as file:
         file.write(dart_data)
 
+def generate_utils(className):
+    objectName = className.strip()
+    objectName = objectName[0].lower() + objectName[1:]
+    attribute = convert_to_snake_case(className).strip()
+    
+    dart_data = "\n\tFuture<void> insert"+className+"("+className+" "+objectName+") async {\r\n"
+    dart_data += "\t\tfinal db = await _databaseService.database;\r\n"
+    dart_data += "\t\tawait db.insert(\r\n"
+    dart_data += "\t\t\t'"+attribute+"',\r\n"
+    dart_data += "\t\t\t"+objectName+".toMap(),\r\n"
+    dart_data += "\t\t\tconflictAlgorithm: ConflictAlgorithm.replace,\r\n"
+    dart_data += "\t\t);\r\n"
+    dart_data += "\t}\r\n"
+    dart_data += "\r\n"
+    dart_data += "\tFuture<void> update"+className+"("+className+" "+objectName+") async {\r\n"
+    dart_data += "\t\tfinal db = await _databaseService.database;\r\n"
+    dart_data += "\t\tawait db.update('"+attribute+"', "+objectName+".toMap(), where: '"+attribute+"_id = ?', whereArgs: ["+objectName+"."+attribute+"_id]);\r\n"
+    dart_data += "\t}\r\n"
+    dart_data += "\r\n"
+    dart_data += "\tFuture<List<"+className+">> get"+className+"(id) async {\r\n"
+    dart_data += "\t\tfinal db = await _databaseService.database;\r\n"
+    dart_data += "\t\tfinal List<Map<String, dynamic>> maps = await db.query('"+attribute+"', where: '"+attribute+"_id = ?', whereArgs: [id]);\r\n"
+    dart_data += "\t\treturn List.generate(maps.length, (index) => "+className+".fromMap(maps[index]));\r\n"
+    dart_data += "\t}\r\n"
+    dart_data += "\r\n"
+    dart_data += "\tFuture<List<"+className+">> get"+className+"s(int limit) async {\r\n"
+    dart_data += "\t\tfinal db = await _databaseService.database;\r\n"
+    dart_data += "\t\tfinal List<Map<String, dynamic>> maps = await db.query('"+attribute+"', limit: limit, where: '"+attribute+"_soft_deleted=0');\r\n"
+    dart_data += "\t\treturn List.generate(maps.length, (index) => "+className+".fromMap(maps[index]));\r\n"
+    dart_data += "\t}"
+    
+    dart_data = dart_data.replace("ss(", "ses(")
+    dart_data = dart_data.replace("ys(", "ies(")
+    
+    print(dart_data)
+
 def text_to_dart(source, destination):
     with open(source) as file:
         dataset = file.read()
     
+    print("\nOnCreate Methods")
+    print("--------------")
+    
+    relations = []
     entities = re.split(r"\r*\n*---\r*\n*", dataset)
     for entity in entities:
         
@@ -161,6 +201,7 @@ def text_to_dart(source, destination):
         
         entity_name = attributes[0]
         assert " " not in entity_name
+        relations.append(entity_name)
 
         for idx, attribute in enumerate(attributes[1:]):
     
@@ -219,6 +260,13 @@ def text_to_dart(source, destination):
             attribs["constructor"].append(f"{required2} this.{value},".strip())
             
         attributes_to_dart(entity_name, attribs, destination)
+
+    
+    print("\nHelper Methods")
+    print("--------------")
+    
+    for relation in relations:
+        generate_utils(relation);
 
 def main():
     
