@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 class Track {
-	int? track_id;
-	final String activity_id;
+	int? id;
+	final String track_uuid;
+	final String activity_uuid;
 	final String track_start_timestamp;
 	final String track_end_timestamp;
 	final double track_origin_latitude;
@@ -15,8 +16,9 @@ class Track {
 	final String track_created_at;
 
 	Track({
-		this.track_id,
-		required this.activity_id,
+		this.id,
+		required this.track_uuid,
+		required this.activity_uuid,
 		required this.track_start_timestamp,
 		required this.track_end_timestamp,
 		required this.track_origin_latitude,
@@ -31,8 +33,9 @@ class Track {
 
 	Map<String, dynamic> toMap() {
 		return {
-			'track_id': track_id,
-			'activity_id': activity_id,
+			'id': id,
+			'track_uuid': track_uuid,
+			'activity_uuid': activity_uuid,
 			'track_start_timestamp': track_start_timestamp,
 			'track_end_timestamp': track_end_timestamp,
 			'track_origin_latitude': track_origin_latitude,
@@ -48,8 +51,9 @@ class Track {
 
 	factory Track.fromMap(Map<String, dynamic> map) {
 		return Track(
-			track_id: map['track_id']?.toInt() ?? 0,
-			activity_id: map['activity_id'] ?? '',
+			id: map['id']?.toInt() ?? 0,
+			track_uuid: map['track_uuid'] ?? '',
+			activity_uuid: map['activity_uuid'] ?? '',
 			track_start_timestamp: map['track_start_timestamp'] ?? '',
 			track_end_timestamp: map['track_end_timestamp'] ?? '',
 			track_origin_latitude: map['track_origin_latitude'] ?? 0.0,
@@ -69,6 +73,6 @@ class Track {
 	
 	@override
 	String toString() {
-		return '{"track_id": $track_id, "activity_id": "$activity_id", "track_start_timestamp": "$track_start_timestamp", "track_end_timestamp": "$track_end_timestamp", "track_origin_latitude": $track_origin_latitude, "track_origin_longitude": $track_origin_longitude, "track_target_latitude": $track_target_latitude, "track_target_longitude": $track_target_longitude, "track_distance_meters": $track_distance_meters, "track_speed_meters_per_second": $track_speed_meters_per_second, "track_elevation_meters": $track_elevation_meters, "track_created_at": "$track_created_at"}';
+		return '{"id": $id, "track_uuid": "$track_uuid", "activity_uuid": "$activity_uuid", "track_start_timestamp": "$track_start_timestamp", "track_end_timestamp": "$track_end_timestamp", "track_origin_latitude": $track_origin_latitude, "track_origin_longitude": $track_origin_longitude, "track_target_latitude": $track_target_latitude, "track_target_longitude": $track_target_longitude, "track_distance_meters": $track_distance_meters, "track_speed_meters_per_second": $track_speed_meters_per_second, "track_elevation_meters": $track_elevation_meters, "track_created_at": "$track_created_at"}';
 	}
 }

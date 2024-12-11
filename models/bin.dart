@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 class Bin {
-	int? bin_id;
-	final String account_id;
+	int? id;
+	final String bin_uuid;
+	final String account_uuid;
 	final double bin_latitude;
 	final double bin_longitude;
 	final String bin_color_code;
@@ -12,8 +13,9 @@ class Bin {
 	String? bin_modified_at;
 
 	Bin({
-		this.bin_id,
-		required this.account_id,
+		this.id,
+		required this.bin_uuid,
+		required this.account_uuid,
 		required this.bin_latitude,
 		required this.bin_longitude,
 		required this.bin_color_code,
@@ -25,8 +27,9 @@ class Bin {
 
 	Map<String, dynamic> toMap() {
 		return {
-			'bin_id': bin_id,
-			'account_id': account_id,
+			'id': id,
+			'bin_uuid': bin_uuid,
+			'account_uuid': account_uuid,
 			'bin_latitude': bin_latitude,
 			'bin_longitude': bin_longitude,
 			'bin_color_code': bin_color_code,
@@ -39,12 +42,13 @@ class Bin {
 
 	factory Bin.fromMap(Map<String, dynamic> map) {
 		return Bin(
-			bin_id: map['bin_id']?.toInt() ?? 0,
-			account_id: map['account_id'] ?? '',
+			id: map['id']?.toInt() ?? 0,
+			bin_uuid: map['bin_uuid'] ?? '',
+			account_uuid: map['account_uuid'] ?? '',
 			bin_latitude: map['bin_latitude'] ?? 0.0,
 			bin_longitude: map['bin_longitude'] ?? 0.0,
 			bin_color_code: map['bin_color_code'] ?? 'Blue',
-			solid_waste_composition: map['solid_waste_composition'] ?? 'Bio-degradable',
+			solid_waste_composition: map['solid_waste_composition'] ?? 'Biodegradable',
 			bin_is_soft_deleted: map['bin_is_soft_deleted']?.toInt() ?? 0,
 			bin_created_at: map['bin_created_at'] ?? '',
 			bin_modified_at: map['bin_modified_at'] ?? '',
@@ -57,6 +61,6 @@ class Bin {
 	
 	@override
 	String toString() {
-		return '{"bin_id": $bin_id, "account_id": "$account_id", "bin_latitude": $bin_latitude, "bin_longitude": $bin_longitude, "bin_color_code": "$bin_color_code", "solid_waste_composition": "$solid_waste_composition", "bin_is_soft_deleted": $bin_is_soft_deleted, "bin_created_at": "$bin_created_at", "bin_modified_at": "$bin_modified_at"}';
+		return '{"id": $id, "bin_uuid": "$bin_uuid", "account_uuid": "$account_uuid", "bin_latitude": $bin_latitude, "bin_longitude": $bin_longitude, "bin_color_code": "$bin_color_code", "solid_waste_composition": "$solid_waste_composition", "bin_is_soft_deleted": $bin_is_soft_deleted, "bin_created_at": "$bin_created_at", "bin_modified_at": "$bin_modified_at"}';
 	}
 }

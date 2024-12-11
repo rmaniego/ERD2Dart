@@ -1,7 +1,8 @@
 Account
-+ account_id
++ id
+account_uuid : String not null *
 account_api : not null *
-account_api_id : not null *
+account_api_uuid : not null *
 account_api_name : not null
 account_api_email : not null
 account_api_photo_url
@@ -10,14 +11,16 @@ account_created_at : not null *
 account_modified_at
 ---
 Activity
-+ activity_id
-# account_id : not null *
++ id
+activity_uuid : String not null *
+# account_uuid : String not null *
 activity_created_at : not null *
 activity_modified_at
 ---
 Track
-+ track_id
-# activity_id : not null *
++ id
+track_uuid : String not null *
+# activity_uuid : String not null *
 track_start_timestamp : not null *
 track_end_timestamp : not null *
 track_origin_latitude : double not null *
@@ -30,46 +33,51 @@ track_elevation_meters : double not null *
 track_created_at : not null *
 ---
 Disposal
-+ disposal_id
-# solid_waste_id : not null *
-# bin_id_of_target : not null *
-# track_id_at_origin : not null *
-# track_id_at_target : not null *
++ id
+disposal_uuid : String not null *
+# solid_waste_uuid : String not null *
+# bin_uuid_of_target : String not null *
+# track_uuid_at_origin : String not null *
+# track_uuid_at_target : String not null *
 disposal_status : not null * = 'started'
 disposal_waste_is_soft_deleted : int = 0
 disposal_created_at : not null *
 disposal_modified_at
 ---
 Bin
-+ bin_id
-# account_id : not null *
++ id
+bin_uuid : String not null *
+# account_uuid : String not null *
 bin_latitude : double not null *
 bin_longitude : double not null *
 bin_color_code : not null * = 'Blue'
-solid_waste_composition : not null * = 'Bio-degradable'
+solid_waste_composition : not null * = 'Biodegradable'
 bin_is_soft_deleted : int = 0
 bin_created_at : not null *
 bin_modified_at
 ---
 BinStatus
-+ bin_status_id
-# account_id : not null *
-# bin_id : not null *
++ id
+bin_status_uuid : String not null *
+# account_uuid : String not null *
+# bin_uuid  : String not null *
 bin_for_replacement : int not null * = 1
 bin_status_is_soft_deleted : int = 0
 bin_status_created_at : not null *
 bin_status_modified_at
 ---
 Leaderboard
-+ leaderboard_id
++ id
+leaderboard_uuid : String not null *
 leaderboard_type : not null * = 'navigators'
 leaderboard_year : int not null *
 leaderboard_week_number : int not null *
 leaderboard_created_at : not null *
 ---
 Award
-+ award_id
-# leaderboard_id : not null *
-# account_id : not null *
++ id
+award_uuid : String not null *
+# leaderboard_uuid : String not null *
+# account_uuid : String not null *
 award_points : int not null *
 award_created_at : not null * 

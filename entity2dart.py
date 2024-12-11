@@ -58,9 +58,10 @@ def attribute_parser(attribute, pk=False):
         parsed[3] = "not null"
         parsed[4] = "*"
     
+    # uuid
     if attribute[0] == "#":
         parsed[0] += "#"
-        parsed[2] = "int"
+        parsed[2] = "String"
         parsed[3] = "not null"
         parsed[4] = "*"
         attribute = attribute[1:].strip()
@@ -158,12 +159,12 @@ def generate_utils(className):
     dart_data += "\r\n"
     dart_data += "\tFuture<void> update"+className+"("+className+" "+objectName+") async {\r\n"
     dart_data += "\t\tfinal db = await _databaseService.database;\r\n"
-    dart_data += "\t\tawait db.update('"+attribute+"', "+objectName+".toMap(), where: '"+attribute+"_id = ?', whereArgs: ["+objectName+"."+attribute+"_id]);\r\n"
+    dart_data += "\t\tawait db.update('"+attribute+"', "+objectName+".toMap(), where: '"+attribute+"_uuid = ?', whereArgs: ["+objectName+"."+attribute+"_uuid]);\r\n"
     dart_data += "\t}\r\n"
     dart_data += "\r\n"
     dart_data += "\tFuture<List<"+className+">> get"+className+"(id) async {\r\n"
     dart_data += "\t\tfinal db = await _databaseService.database;\r\n"
-    dart_data += "\t\tfinal List<Map<String, dynamic>> maps = await db.query('"+attribute+"', where: '"+attribute+"_id = ?', whereArgs: [id]);\r\n"
+    dart_data += "\t\tfinal List<Map<String, dynamic>> maps = await db.query('"+attribute+"', where: '"+attribute+"_uuid = ?', whereArgs: [id]);\r\n"
     dart_data += "\t\treturn List.generate(maps.length, (index) => "+className+".fromMap(maps[index]));\r\n"
     dart_data += "\t}\r\n"
     dart_data += "\r\n"

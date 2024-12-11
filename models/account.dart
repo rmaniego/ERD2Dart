@@ -1,9 +1,10 @@
 import 'dart:convert';
 
 class Account {
-	int? account_id;
+	int? id;
+	final String account_uuid;
 	final String account_api;
-	final String account_api_id;
+	final String account_api_uuid;
 	String account_api_name;
 	String account_api_email;
 	String? account_api_photo_url;
@@ -12,9 +13,10 @@ class Account {
 	String? account_modified_at;
 
 	Account({
-		this.account_id,
+		this.id,
+		required this.account_uuid,
 		required this.account_api,
-		required this.account_api_id,
+		required this.account_api_uuid,
 		required this.account_api_name,
 		required this.account_api_email,
 		this.account_api_photo_url,
@@ -25,9 +27,10 @@ class Account {
 
 	Map<String, dynamic> toMap() {
 		return {
-			'account_id': account_id,
+			'id': id,
+			'account_uuid': account_uuid,
 			'account_api': account_api,
-			'account_api_id': account_api_id,
+			'account_api_uuid': account_api_uuid,
 			'account_api_name': account_api_name,
 			'account_api_email': account_api_email,
 			'account_api_photo_url': account_api_photo_url,
@@ -39,9 +42,10 @@ class Account {
 
 	factory Account.fromMap(Map<String, dynamic> map) {
 		return Account(
-			account_id: map['account_id']?.toInt() ?? 0,
+			id: map['id']?.toInt() ?? 0,
+			account_uuid: map['account_uuid'] ?? '',
 			account_api: map['account_api'] ?? '',
-			account_api_id: map['account_api_id'] ?? '',
+			account_api_uuid: map['account_api_uuid'] ?? '',
 			account_api_name: map['account_api_name'] ?? '',
 			account_api_email: map['account_api_email'] ?? '',
 			account_api_photo_url: map['account_api_photo_url'] ?? '',
@@ -57,6 +61,6 @@ class Account {
 	
 	@override
 	String toString() {
-		return '{"account_id": $account_id, "account_api": "$account_api", "account_api_id": "$account_api_id", "account_api_name": "$account_api_name", "account_api_email": "$account_api_email", "account_api_photo_url": "$account_api_photo_url", "account_is_soft_deleted": "$account_is_soft_deleted", "account_created_at": "$account_created_at", "account_modified_at": "$account_modified_at"}';
+		return '{"id": $id, "account_uuid": "$account_uuid", "account_api": "$account_api", "account_api_uuid": "$account_api_uuid", "account_api_name": "$account_api_name", "account_api_email": "$account_api_email", "account_api_photo_url": "$account_api_photo_url", "account_is_soft_deleted": "$account_is_soft_deleted", "account_created_at": "$account_created_at", "account_modified_at": "$account_modified_at"}';
 	}
 }

@@ -1,22 +1,25 @@
 import 'dart:convert';
 
 class Activity {
-	int? activity_id;
-	final String account_id;
+	int? id;
+	final String activity_uuid;
+	final String account_uuid;
 	final String activity_created_at;
 	String? activity_modified_at;
 
 	Activity({
-		this.activity_id,
-		required this.account_id,
+		this.id,
+		required this.activity_uuid,
+		required this.account_uuid,
 		required this.activity_created_at,
 		this.activity_modified_at,
 	});
 
 	Map<String, dynamic> toMap() {
 		return {
-			'activity_id': activity_id,
-			'account_id': account_id,
+			'id': id,
+			'activity_uuid': activity_uuid,
+			'account_uuid': account_uuid,
 			'activity_created_at': activity_created_at,
 			'activity_modified_at': activity_modified_at,
 		};
@@ -24,8 +27,9 @@ class Activity {
 
 	factory Activity.fromMap(Map<String, dynamic> map) {
 		return Activity(
-			activity_id: map['activity_id']?.toInt() ?? 0,
-			account_id: map['account_id'] ?? '',
+			id: map['id']?.toInt() ?? 0,
+			activity_uuid: map['activity_uuid'] ?? '',
+			account_uuid: map['account_uuid'] ?? '',
 			activity_created_at: map['activity_created_at'] ?? '',
 			activity_modified_at: map['activity_modified_at'] ?? '',
 		);
@@ -37,6 +41,6 @@ class Activity {
 	
 	@override
 	String toString() {
-		return '{"activity_id": $activity_id, "account_id": "$account_id", "activity_created_at": "$activity_created_at", "activity_modified_at": "$activity_modified_at"}';
+		return '{"id": $id, "activity_uuid": "$activity_uuid", "account_uuid": "$account_uuid", "activity_created_at": "$activity_created_at", "activity_modified_at": "$activity_modified_at"}';
 	}
 }
