@@ -3,8 +3,8 @@ import 'dart:convert';
 class Track {
 	final String uuid;
 	final String disposalUuid;
-	final double setTimestamp;
-	final double endTimestamp;
+	final int setTimestamp;
+	final int endTimestamp;
 	final double originLatitude;
 	final double originLongitude;
 	final double targetLatitude;
@@ -50,8 +50,8 @@ class Track {
 		return Track(
 			uuid: map['uuid'] ?? '',
 			disposalUuid: map['disposal_uuid'] ?? '',
-			setTimestamp: map['set_timestamp'] ?? 0.0,
-			endTimestamp: map['end_timestamp'] ?? 0.0,
+			setTimestamp: map['set_timestamp']?.toInt() ?? 0,
+			endTimestamp: map['end_timestamp']?.toInt() ?? 0,
 			originLatitude: map['origin_latitude'] ?? 0.0,
 			originLongitude: map['origin_longitude'] ?? 0.0,
 			targetLatitude: map['target_latitude'] ?? 0.0,

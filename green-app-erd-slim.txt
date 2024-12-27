@@ -36,8 +36,8 @@ createdAt : string not null *
 Track
 + uuid : string not null *
 # disposalUuid : string not null *
-setTimestamp : double not null *
-endTimestamp : double not null *
+setTimestamp : int not null *
+endTimestamp : int not null *
 originLatitude : double not null *
 originLongitude : double not null *
 targetLatitude : double not null *
