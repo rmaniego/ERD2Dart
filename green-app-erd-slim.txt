@@ -17,7 +17,7 @@ createdAt : string not null *
 AccountBin
 + uuid : string *
 # accountUuid : string not null *
-# binId : string not null *
+# binUuid : string not null *
 status : string = 'functional'
 createdAt : string not null *
 ---

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 class Disposal {
-	String uuid;
-	String accountUuid;
-	String binUuid;
+	final String uuid;
+	final String accountUuid;
+	final String binUuid;
 	String? status;
 	int? isDeleted;
 	final String createdAt;

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 class Award {
-	String uuid;
-	String leaderboardUuid;
-	String accountUuid;
+	final String uuid;
+	final String leaderboardUuid;
+	final String accountUuid;
 	final int points;
 	final String createdAt;
 

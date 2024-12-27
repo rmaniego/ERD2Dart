@@ -1,16 +1,16 @@
 import 'dart:convert';
 
 class AccountBin {
-	String uuid;
-	String accountUuid;
-	String binId;
+	final String uuid;
+	final String accountUuid;
+	final String binUuid;
 	String? status;
 	final String createdAt;
 
 	AccountBin({
 		required this.uuid,
 		required this.accountUuid,
-		required this.binId,
+		required this.binUuid,
 		this.status,
 		required this.createdAt,
 	});
@@ -19,7 +19,7 @@ class AccountBin {
 		return {
 			'uuid': uuid,
 			'account_uuid': accountUuid,
-			'bin_id': binId,
+			'bin_uuid': binUuid,
 			'status': status,
 			'created_at': createdAt,
 		};
@@ -29,7 +29,7 @@ class AccountBin {
 		return AccountBin(
 			uuid: map['uuid'] ?? '',
 			accountUuid: map['account_uuid'] ?? '',
-			binId: map['bin_id'] ?? '',
+			binUuid: map['bin_uuid'] ?? '',
 			status: map['status'] ?? 'functional',
 			createdAt: map['created_at'] ?? '',
 		);
@@ -41,6 +41,6 @@ class AccountBin {
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "account_uuid": "$accountUuid", "bin_id": "$binId", "status": "$status", "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "account_uuid": "$accountUuid", "bin_uuid": "$binUuid", "status": "$status", "created_at": "$createdAt"}';
 	}
 }
