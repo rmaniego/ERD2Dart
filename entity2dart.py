@@ -172,7 +172,7 @@ def generate_utils(className):
     dart_data += "\r\n"
     dart_data += "\tFuture<List<"+className+">> get"+className+"s(int limit) async {\r\n"
     dart_data += "\t\tfinal db = await _databaseService.database;\r\n"
-    dart_data += "\t\tfinal List<Map<String, dynamic>> maps = await db.query('"+attribute+"', limit: limit, where: 'is_deleted=0');\r\n"
+    dart_data += "\t\tfinal List<Map<String, dynamic>> maps = await db.query('"+attribute+"', limit: limit);\r\n"
     dart_data += "\t\treturn List.generate(maps.length, (index) => "+className+".fromMap(maps[index]));\r\n"
     dart_data += "\t}"
     
