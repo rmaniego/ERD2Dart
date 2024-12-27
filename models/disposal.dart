@@ -6,6 +6,7 @@ class Disposal {
 	final String binUuid;
 	String? status;
 	int? isDeleted;
+	int isSynchronized;
 	final String createdAt;
 
 	Disposal({
@@ -14,6 +15,7 @@ class Disposal {
 		required this.binUuid,
 		this.status,
 		this.isDeleted,
+		required this.isSynchronized,
 		required this.createdAt,
 	});
 
@@ -24,6 +26,7 @@ class Disposal {
 			'bin_uuid': binUuid,
 			'status': status,
 			'is_deleted': isDeleted,
+			'is_synchronized': isSynchronized,
 			'created_at': createdAt,
 		};
 	}
@@ -35,6 +38,7 @@ class Disposal {
 			binUuid: map['bin_uuid'] ?? '',
 			status: map['status'] ?? 'started',
 			isDeleted: map['is_deleted']?.toInt() ?? 0,
+			isSynchronized: map['is_synchronized']?.toInt() ?? 0,
 			createdAt: map['created_at'] ?? '',
 		);
 	}
@@ -45,6 +49,6 @@ class Disposal {
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "account_uuid": "$accountUuid", "bin_uuid": "$binUuid", "status": "$status", "is_deleted": $isDeleted, "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "account_uuid": "$accountUuid", "bin_uuid": "$binUuid", "status": "$status", "is_deleted": $isDeleted, "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
 	}
 }

@@ -11,6 +11,7 @@ class Track {
 	final double targetLongitude;
 	final double distanceInMeters;
 	final double speedMetersPerSecond;
+	int isSynchronized;
 	final String createdAt;
 
 	Track({
@@ -24,6 +25,7 @@ class Track {
 		required this.targetLongitude,
 		required this.distanceInMeters,
 		required this.speedMetersPerSecond,
+		required this.isSynchronized,
 		required this.createdAt,
 	});
 
@@ -39,6 +41,7 @@ class Track {
 			'target_longitude': targetLongitude,
 			'distance_in_meters': distanceInMeters,
 			'speed_meters_per_second': speedMetersPerSecond,
+			'is_synchronized': isSynchronized,
 			'created_at': createdAt,
 		};
 	}
@@ -55,6 +58,7 @@ class Track {
 			targetLongitude: map['target_longitude'] ?? 0.0,
 			distanceInMeters: map['distance_in_meters'] ?? 0.0,
 			speedMetersPerSecond: map['speed_meters_per_second'] ?? 0.0,
+			isSynchronized: map['is_synchronized']?.toInt() ?? 0,
 			createdAt: map['created_at'] ?? '',
 		);
 	}
@@ -65,6 +69,6 @@ class Track {
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "disposal_uuid": "$disposalUuid", "set_timestamp": $setTimestamp, "end_timestamp": $endTimestamp, "origin_latitude": $originLatitude, "origin_longitude": $originLongitude, "target_latitude": $targetLatitude, "target_longitude": $targetLongitude, "distance_in_meters": $distanceInMeters, "speed_meters_per_second": $speedMetersPerSecond, "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "disposal_uuid": "$disposalUuid", "set_timestamp": $setTimestamp, "end_timestamp": $endTimestamp, "origin_latitude": $originLatitude, "origin_longitude": $originLongitude, "target_latitude": $targetLatitude, "target_longitude": $targetLongitude, "distance_in_meters": $distanceInMeters, "speed_meters_per_second": $speedMetersPerSecond, "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
 	}
 }

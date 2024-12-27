@@ -5,6 +5,7 @@ class AccountBin {
 	final String accountUuid;
 	final String binUuid;
 	String? status;
+	int isSynchronized;
 	final String createdAt;
 
 	AccountBin({
@@ -12,6 +13,7 @@ class AccountBin {
 		required this.accountUuid,
 		required this.binUuid,
 		this.status,
+		required this.isSynchronized,
 		required this.createdAt,
 	});
 
@@ -21,6 +23,7 @@ class AccountBin {
 			'account_uuid': accountUuid,
 			'bin_uuid': binUuid,
 			'status': status,
+			'is_synchronized': isSynchronized,
 			'created_at': createdAt,
 		};
 	}
@@ -31,6 +34,7 @@ class AccountBin {
 			accountUuid: map['account_uuid'] ?? '',
 			binUuid: map['bin_uuid'] ?? '',
 			status: map['status'] ?? 'functional',
+			isSynchronized: map['is_synchronized']?.toInt() ?? 0,
 			createdAt: map['created_at'] ?? '',
 		);
 	}
@@ -41,6 +45,6 @@ class AccountBin {
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "account_uuid": "$accountUuid", "bin_uuid": "$binUuid", "status": "$status", "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "account_uuid": "$accountUuid", "bin_uuid": "$binUuid", "status": "$status", "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
 	}
 }

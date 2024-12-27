@@ -6,6 +6,7 @@ class Bin {
 	final String longitude;
 	String? colorCode;
 	String? composition;
+	int isSynchronized;
 	final String createdAt;
 
 	Bin({
@@ -14,6 +15,7 @@ class Bin {
 		required this.longitude,
 		this.colorCode,
 		this.composition,
+		required this.isSynchronized,
 		required this.createdAt,
 	});
 
@@ -24,6 +26,7 @@ class Bin {
 			'longitude': longitude,
 			'color_code': colorCode,
 			'composition': composition,
+			'is_synchronized': isSynchronized,
 			'created_at': createdAt,
 		};
 	}
@@ -35,6 +38,7 @@ class Bin {
 			longitude: map['longitude'] ?? '',
 			colorCode: map['color_code'] ?? 'blue',
 			composition: map['composition'] ?? 'non-biodegradable',
+			isSynchronized: map['is_synchronized']?.toInt() ?? 0,
 			createdAt: map['created_at'] ?? '',
 		);
 	}
@@ -45,6 +49,6 @@ class Bin {
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "latitude": "$latitude", "longitude": "$longitude", "color_code": "$colorCode", "composition": "$composition", "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "latitude": "$latitude", "longitude": "$longitude", "color_code": "$colorCode", "composition": "$composition", "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
 	}
 }

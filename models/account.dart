@@ -6,6 +6,7 @@ class Account {
 	String? apiName;
 	String? apiEmail;
 	String? apiPhotoUrl;
+	int isSynchronized;
 	final String createdAt;
 
 	Account({
@@ -14,6 +15,7 @@ class Account {
 		this.apiName,
 		this.apiEmail,
 		this.apiPhotoUrl,
+		required this.isSynchronized,
 		required this.createdAt,
 	});
 
@@ -24,6 +26,7 @@ class Account {
 			'api_name': apiName,
 			'api_email': apiEmail,
 			'api_photo_url': apiPhotoUrl,
+			'is_synchronized': isSynchronized,
 			'created_at': createdAt,
 		};
 	}
@@ -35,6 +38,7 @@ class Account {
 			apiName: map['api_name'] ?? '',
 			apiEmail: map['api_email'] ?? '',
 			apiPhotoUrl: map['api_photo_url'] ?? '',
+			isSynchronized: map['is_synchronized']?.toInt() ?? 0,
 			createdAt: map['created_at'] ?? '',
 		);
 	}
@@ -45,6 +49,6 @@ class Account {
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "api_id": "$apiId", "api_name": "$apiName", "api_email": "$apiEmail", "api_photo_url": "$apiPhotoUrl", "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "api_id": "$apiId", "api_name": "$apiName", "api_email": "$apiEmail", "api_photo_url": "$apiPhotoUrl", "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
 	}
 }
