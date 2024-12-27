@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 class Track {
-	string uuid;
-	final String disposalUuid;
+	String uuid;
+	String disposalUuid;
 	final double setTimestamp;
 	final double endTimestamp;
 	final double originLatitude;
@@ -14,7 +14,7 @@ class Track {
 	final String createdAt;
 
 	Track({
-		this.uuid,
+		required this.uuid,
 		required this.disposalUuid,
 		required this.setTimestamp,
 		required this.endTimestamp,

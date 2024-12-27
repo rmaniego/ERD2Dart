@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 class Account {
-	string uuid;
+	String uuid;
 	String? apiId;
 	String? apiName;
 	String? apiEmail;
@@ -9,7 +9,7 @@ class Account {
 	final String createdAt;
 
 	Account({
-		this.uuid,
+		required this.uuid,
 		this.apiId,
 		this.apiName,
 		this.apiEmail,

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 class Bin {
-	string uuid;
+	String uuid;
 	final String latitude;
 	final String longitude;
 	String? colorCode;
@@ -9,7 +9,7 @@ class Bin {
 	final String createdAt;
 
 	Bin({
-		this.uuid,
+		required this.uuid,
 		required this.latitude,
 		required this.longitude,
 		this.colorCode,

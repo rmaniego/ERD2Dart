@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 class Leaderboard {
-	string uuid;
+	String uuid;
 	String? category;
 	final int year;
 	final int week;
 	final String createdAt;
 
 	Leaderboard({
-		this.uuid,
+		required this.uuid,
 		this.category,
 		required this.year,
 		required this.week,

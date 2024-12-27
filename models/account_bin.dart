@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 class AccountBin {
-	string uuid;
-	final String accountUuid;
-	final String binId;
+	String uuid;
+	String accountUuid;
+	String binId;
 	String? status;
 	final String createdAt;
 
 	AccountBin({
-		this.uuid,
+		required this.uuid,
 		required this.accountUuid,
 		required this.binId,
 		this.status,
