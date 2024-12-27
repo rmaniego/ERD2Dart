@@ -1,5 +1,5 @@
 Account
-+ uuid : string not null *
++ uuid : string *
 apiId
 apiName
 apiEmail
@@ -7,7 +7,7 @@ apiPhotoUrl
 createdAt : string not null *
 ---
 Bin
-+ uuid : string not null *
++ uuid : string *
 latitude : string not null *
 longitude : string not null *
 colorCode : string = 'blue'
@@ -15,14 +15,14 @@ composition : string = 'non-biodegradable'
 createdAt : string not null *
 ---
 AccountBin
-+ uuid : string not null *
++ uuid : string *
 # accountUuid : string not null *
 # binId : string not null *
 status : string = 'functional'
 createdAt : string not null *
 ---
 Disposal
-+ uuid : string not null *
++ uuid : string *
 # accountUuid : string not null *
 # binUuid : string not null *
 status : string = 'started'
@@ -30,7 +30,7 @@ isDeleted : int = 0
 createdAt : string not null *
 ---
 Track
-+ uuid : string not null *
++ uuid : string *
 # disposalUuid : string not null *
 setTimestamp : double not null *
 endTimestamp : double not null *
@@ -43,14 +43,14 @@ speedMetersPerSecond : double not null *
 createdAt : string not null *
 ---
 Leaderboard
-+ uuid : string not null *
++ uuid : string *
 category : string = 'navigators'
 year : int not null *
 week : int not null *
 createdAt : string not null *
 ---
 Award
-+ uuid : string not null *
++ uuid : string *
 # leaderboardUuid : string not null *
 # accountUuid : string not null *
 points : int not null *

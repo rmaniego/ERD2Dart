@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 class Bin {
-	int? uuid;
+	string uuid;
 	final String latitude;
 	final String longitude;
 	String? colorCode;

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 class Track {
-	int? uuid;
+	string uuid;
 	final String disposalUuid;
 	final double setTimestamp;
 	final double endTimestamp;

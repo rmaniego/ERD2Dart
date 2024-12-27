@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 class Account {
-	int? uuid;
+	string uuid;
 	String? apiId;
 	String? apiName;
 	String? apiEmail;

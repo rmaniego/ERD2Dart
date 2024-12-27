@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 class AccountBin {
-	int? uuid;
+	string uuid;
 	final String accountUuid;
 	final String binId;
 	String? status;

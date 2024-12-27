@@ -241,9 +241,14 @@ def text_to_dart(source, destination):
             not_null = ["", "NOT NULL "][int(parsed[3] == "not null")]
             
             if "+" in parsed[0]:
-                attribs["class"].append(f"int? {value};")
+                if dtype == "int":
+                    attribs["class"].append(f"int? {value};")
+                    attribs["columns"].append(f"{sk_value} INTEGER PRIMARY KEY AUTOINCREMENT")
+                else:
+                    attribs["class"].append(f"string {value};")
+                    attribs["columns"].append(f"{sk_value} TEXT PRIMARY KEY")
+                
                 attribs["constructor"].append(f"this.{value},")
-                attribs["columns"].append(f"{sk_value} INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL")
                 continue
             
             default = parsed[5]
