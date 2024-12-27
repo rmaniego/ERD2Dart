@@ -1,69 +1,61 @@
 import 'dart:convert';
 
 class Track {
-	int? id;
-	final String track_uuid;
-	final String activity_uuid;
-	final String track_start_timestamp;
-	final String track_end_timestamp;
-	final double track_origin_latitude;
-	final double track_origin_longitude;
-	final double track_target_latitude;
-	final double track_target_longitude;
-	final double track_distance_meters;
-	final double track_speed_meters_per_second;
-	final double track_elevation_meters;
-	final String track_created_at;
+	int? uuid;
+	final String disposalUuid;
+	final double setTimestamp;
+	final double endTimestamp;
+	final double originLatitude;
+	final double originLongitude;
+	final double targetLatitude;
+	final double targetLongitude;
+	final double distanceInMeters;
+	final double speedMetersPerSecond;
+	final String createdAt;
 
 	Track({
-		this.id,
-		required this.track_uuid,
-		required this.activity_uuid,
-		required this.track_start_timestamp,
-		required this.track_end_timestamp,
-		required this.track_origin_latitude,
-		required this.track_origin_longitude,
-		required this.track_target_latitude,
-		required this.track_target_longitude,
-		required this.track_distance_meters,
-		required this.track_speed_meters_per_second,
-		required this.track_elevation_meters,
-		required this.track_created_at,
+		this.uuid,
+		required this.disposalUuid,
+		required this.setTimestamp,
+		required this.endTimestamp,
+		required this.originLatitude,
+		required this.originLongitude,
+		required this.targetLatitude,
+		required this.targetLongitude,
+		required this.distanceInMeters,
+		required this.speedMetersPerSecond,
+		required this.createdAt,
 	});
 
 	Map<String, dynamic> toMap() {
 		return {
-			'id': id,
-			'track_uuid': track_uuid,
-			'activity_uuid': activity_uuid,
-			'track_start_timestamp': track_start_timestamp,
-			'track_end_timestamp': track_end_timestamp,
-			'track_origin_latitude': track_origin_latitude,
-			'track_origin_longitude': track_origin_longitude,
-			'track_target_latitude': track_target_latitude,
-			'track_target_longitude': track_target_longitude,
-			'track_distance_meters': track_distance_meters,
-			'track_speed_meters_per_second': track_speed_meters_per_second,
-			'track_elevation_meters': track_elevation_meters,
-			'track_created_at': track_created_at,
+			'uuid': uuid,
+			'disposal_uuid': disposalUuid,
+			'set_timestamp': setTimestamp,
+			'end_timestamp': endTimestamp,
+			'origin_latitude': originLatitude,
+			'origin_longitude': originLongitude,
+			'target_latitude': targetLatitude,
+			'target_longitude': targetLongitude,
+			'distance_in_meters': distanceInMeters,
+			'speed_meters_per_second': speedMetersPerSecond,
+			'created_at': createdAt,
 		};
 	}
 
 	factory Track.fromMap(Map<String, dynamic> map) {
 		return Track(
-			id: map['id']?.toInt() ?? 0,
-			track_uuid: map['track_uuid'] ?? '',
-			activity_uuid: map['activity_uuid'] ?? '',
-			track_start_timestamp: map['track_start_timestamp'] ?? '',
-			track_end_timestamp: map['track_end_timestamp'] ?? '',
-			track_origin_latitude: map['track_origin_latitude'] ?? 0.0,
-			track_origin_longitude: map['track_origin_longitude'] ?? 0.0,
-			track_target_latitude: map['track_target_latitude'] ?? 0.0,
-			track_target_longitude: map['track_target_longitude'] ?? 0.0,
-			track_distance_meters: map['track_distance_meters'] ?? 0.0,
-			track_speed_meters_per_second: map['track_speed_meters_per_second'] ?? 0.0,
-			track_elevation_meters: map['track_elevation_meters'] ?? 0.0,
-			track_created_at: map['track_created_at'] ?? '',
+			uuid: map['uuid'] ?? '',
+			disposalUuid: map['disposal_uuid'] ?? '',
+			setTimestamp: map['set_timestamp'] ?? 0.0,
+			endTimestamp: map['end_timestamp'] ?? 0.0,
+			originLatitude: map['origin_latitude'] ?? 0.0,
+			originLongitude: map['origin_longitude'] ?? 0.0,
+			targetLatitude: map['target_latitude'] ?? 0.0,
+			targetLongitude: map['target_longitude'] ?? 0.0,
+			distanceInMeters: map['distance_in_meters'] ?? 0.0,
+			speedMetersPerSecond: map['speed_meters_per_second'] ?? 0.0,
+			createdAt: map['created_at'] ?? '',
 		);
 	}
 
@@ -73,6 +65,6 @@ class Track {
 	
 	@override
 	String toString() {
-		return '{"id": $id, "track_uuid": "$track_uuid", "activity_uuid": "$activity_uuid", "track_start_timestamp": "$track_start_timestamp", "track_end_timestamp": "$track_end_timestamp", "track_origin_latitude": $track_origin_latitude, "track_origin_longitude": $track_origin_longitude, "track_target_latitude": $track_target_latitude, "track_target_longitude": $track_target_longitude, "track_distance_meters": $track_distance_meters, "track_speed_meters_per_second": $track_speed_meters_per_second, "track_elevation_meters": $track_elevation_meters, "track_created_at": "$track_created_at"}';
+		return '{"uuid": "$uuid", "disposal_uuid": "$disposalUuid", "set_timestamp": $setTimestamp, "end_timestamp": $endTimestamp, "origin_latitude": $originLatitude, "origin_longitude": $originLongitude, "target_latitude": $targetLatitude, "target_longitude": $targetLongitude, "distance_in_meters": $distanceInMeters, "speed_meters_per_second": $speedMetersPerSecond, "created_at": "$createdAt"}';
 	}
 }

@@ -1,57 +1,41 @@
 import 'dart:convert';
 
 class Account {
-	int? id;
-	final String account_uuid;
-	final String account_api;
-	final String account_api_uuid;
-	String account_api_name;
-	String account_api_email;
-	String? account_api_photo_url;
-	String? account_is_soft_deleted;
-	final String account_created_at;
-	String? account_modified_at;
+	int? uuid;
+	String? apiId;
+	String? apiName;
+	String? apiEmail;
+	String? apiPhotoUrl;
+	final String createdAt;
 
 	Account({
-		this.id,
-		required this.account_uuid,
-		required this.account_api,
-		required this.account_api_uuid,
-		required this.account_api_name,
-		required this.account_api_email,
-		this.account_api_photo_url,
-		this.account_is_soft_deleted,
-		required this.account_created_at,
-		this.account_modified_at,
+		this.uuid,
+		this.apiId,
+		this.apiName,
+		this.apiEmail,
+		this.apiPhotoUrl,
+		required this.createdAt,
 	});
 
 	Map<String, dynamic> toMap() {
 		return {
-			'id': id,
-			'account_uuid': account_uuid,
-			'account_api': account_api,
-			'account_api_uuid': account_api_uuid,
-			'account_api_name': account_api_name,
-			'account_api_email': account_api_email,
-			'account_api_photo_url': account_api_photo_url,
-			'account_is_soft_deleted': account_is_soft_deleted,
-			'account_created_at': account_created_at,
-			'account_modified_at': account_modified_at,
+			'uuid': uuid,
+			'api_id': apiId,
+			'api_name': apiName,
+			'api_email': apiEmail,
+			'api_photo_url': apiPhotoUrl,
+			'created_at': createdAt,
 		};
 	}
 
 	factory Account.fromMap(Map<String, dynamic> map) {
 		return Account(
-			id: map['id']?.toInt() ?? 0,
-			account_uuid: map['account_uuid'] ?? '',
-			account_api: map['account_api'] ?? '',
-			account_api_uuid: map['account_api_uuid'] ?? '',
-			account_api_name: map['account_api_name'] ?? '',
-			account_api_email: map['account_api_email'] ?? '',
-			account_api_photo_url: map['account_api_photo_url'] ?? '',
-			account_is_soft_deleted: map['account_is_soft_deleted'] ?? 0,
-			account_created_at: map['account_created_at'] ?? '',
-			account_modified_at: map['account_modified_at'] ?? '',
+			uuid: map['uuid'] ?? '',
+			apiId: map['api_id'] ?? '',
+			apiName: map['api_name'] ?? '',
+			apiEmail: map['api_email'] ?? '',
+			apiPhotoUrl: map['api_photo_url'] ?? '',
+			createdAt: map['created_at'] ?? '',
 		);
 	}
 
@@ -61,6 +45,6 @@ class Account {
 	
 	@override
 	String toString() {
-		return '{"id": $id, "account_uuid": "$account_uuid", "account_api": "$account_api", "account_api_uuid": "$account_api_uuid", "account_api_name": "$account_api_name", "account_api_email": "$account_api_email", "account_api_photo_url": "$account_api_photo_url", "account_is_soft_deleted": "$account_is_soft_deleted", "account_created_at": "$account_created_at", "account_modified_at": "$account_modified_at"}';
+		return '{"uuid": "$uuid", "api_id": "$apiId", "api_name": "$apiName", "api_email": "$apiEmail", "api_photo_url": "$apiPhotoUrl", "created_at": "$createdAt"}';
 	}
 }

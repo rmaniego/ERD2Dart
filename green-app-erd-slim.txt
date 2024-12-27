@@ -1,83 +1,57 @@
 Account
-+ id
-account_uuid : String not null *
-account_api : not null *
-account_api_uuid : not null *
-account_api_name : not null
-account_api_email : not null
-account_api_photo_url
-account_is_soft_deleted : = 0
-account_created_at : not null *
-account_modified_at
----
-Activity
-+ id
-activity_uuid : String not null *
-# account_uuid : String not null *
-activity_created_at : not null *
-activity_modified_at
----
-Track
-+ id
-track_uuid : String not null *
-# activity_uuid : String not null *
-track_start_timestamp : not null *
-track_end_timestamp : not null *
-track_origin_latitude : double not null *
-track_origin_longitude : double not null *
-track_target_latitude : double not null *
-track_target_longitude : double not null *
-track_distance_meters : double not null *
-track_speed_meters_per_second : double not null *
-track_elevation_meters : double not null *
-track_created_at : not null *
----
-Disposal
-+ id
-disposal_uuid : String not null *
-# solid_waste_uuid : String not null *
-# bin_uuid_of_target : String not null *
-# track_uuid_at_origin : String not null *
-# track_uuid_at_target : String not null *
-disposal_status : not null * = 'started'
-disposal_waste_is_soft_deleted : int = 0
-disposal_created_at : not null *
-disposal_modified_at
++ uuid : string not null *
+apiId
+apiName
+apiEmail
+apiPhotoUrl
+createdAt : string not null *
 ---
 Bin
-+ id
-bin_uuid : String not null *
-# account_uuid : String not null *
-bin_latitude : double not null *
-bin_longitude : double not null *
-bin_color_code : not null * = 'Blue'
-solid_waste_composition : not null * = 'Biodegradable'
-bin_is_soft_deleted : int = 0
-bin_created_at : not null *
-bin_modified_at
++ uuid : string not null *
+latitude : string not null *
+longitude : string not null *
+colorCode : string = 'blue'
+composition : string = 'non-biodegradable'
+createdAt : string not null *
 ---
-BinStatus
-+ id
-bin_status_uuid : String not null *
-# account_uuid : String not null *
-# bin_uuid  : String not null *
-bin_for_replacement : int not null * = 1
-bin_status_is_soft_deleted : int = 0
-bin_status_created_at : not null *
-bin_status_modified_at
+AccountBin
++ uuid : string not null *
+# accountUuid : string not null *
+# binId : string not null *
+status : string = 'functional'
+createdAt : string not null *
+---
+Disposal
++ uuid : string not null *
+# accountUuid : string not null *
+# binUuid : string not null *
+status : string = 'started'
+isDeleted : int = 0
+createdAt : string not null *
+---
+Track
++ uuid : string not null *
+# disposalUuid : string not null *
+setTimestamp : double not null *
+endTimestamp : double not null *
+originLatitude : double not null *
+originLongitude : double not null *
+targetLatitude : double not null *
+targetLongitude : double not null *
+distanceInMeters : double not null *
+speedMetersPerSecond : double not null *
+createdAt : string not null *
 ---
 Leaderboard
-+ id
-leaderboard_uuid : String not null *
-leaderboard_type : not null * = 'navigators'
-leaderboard_year : int not null *
-leaderboard_week_number : int not null *
-leaderboard_created_at : not null *
++ uuid : string not null *
+category : string = 'navigators'
+year : int not null *
+week : int not null *
+createdAt : string not null *
 ---
 Award
-+ id
-award_uuid : String not null *
-# leaderboard_uuid : String not null *
-# account_uuid : String not null *
-award_points : int not null *
-award_created_at : not null * 
++ uuid : string not null *
+# leaderboardUuid : string not null *
+# accountUuid : string not null *
+points : int not null *
+createdAt : string not null * 

@@ -1,41 +1,37 @@
 import 'dart:convert';
 
 class Award {
-	int? id;
-	final String award_uuid;
-	final String leaderboard_uuid;
-	final String account_uuid;
-	final int award_points;
-	final String award_created_at;
+	int? uuid;
+	final String leaderboardUuid;
+	final String accountUuid;
+	final int points;
+	final String createdAt;
 
 	Award({
-		this.id,
-		required this.award_uuid,
-		required this.leaderboard_uuid,
-		required this.account_uuid,
-		required this.award_points,
-		required this.award_created_at,
+		this.uuid,
+		required this.leaderboardUuid,
+		required this.accountUuid,
+		required this.points,
+		required this.createdAt,
 	});
 
 	Map<String, dynamic> toMap() {
 		return {
-			'id': id,
-			'award_uuid': award_uuid,
-			'leaderboard_uuid': leaderboard_uuid,
-			'account_uuid': account_uuid,
-			'award_points': award_points,
-			'award_created_at': award_created_at,
+			'uuid': uuid,
+			'leaderboard_uuid': leaderboardUuid,
+			'account_uuid': accountUuid,
+			'points': points,
+			'created_at': createdAt,
 		};
 	}
 
 	factory Award.fromMap(Map<String, dynamic> map) {
 		return Award(
-			id: map['id']?.toInt() ?? 0,
-			award_uuid: map['award_uuid'] ?? '',
-			leaderboard_uuid: map['leaderboard_uuid'] ?? '',
-			account_uuid: map['account_uuid'] ?? '',
-			award_points: map['award_points']?.toInt() ?? 0,
-			award_created_at: map['award_created_at'] ?? '',
+			uuid: map['uuid'] ?? '',
+			leaderboardUuid: map['leaderboard_uuid'] ?? '',
+			accountUuid: map['account_uuid'] ?? '',
+			points: map['points']?.toInt() ?? 0,
+			createdAt: map['created_at'] ?? '',
 		);
 	}
 
@@ -45,6 +41,6 @@ class Award {
 	
 	@override
 	String toString() {
-		return '{"id": $id, "award_uuid": "$award_uuid", "leaderboard_uuid": "$leaderboard_uuid", "account_uuid": "$account_uuid", "award_points": $award_points, "award_created_at": "$award_created_at"}';
+		return '{"uuid": "$uuid", "leaderboard_uuid": "$leaderboardUuid", "account_uuid": "$accountUuid", "points": $points, "created_at": "$createdAt"}';
 	}
 }

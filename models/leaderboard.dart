@@ -1,41 +1,37 @@
 import 'dart:convert';
 
 class Leaderboard {
-	int? id;
-	final String leaderboard_uuid;
-	final String leaderboard_type;
-	final int leaderboard_year;
-	final int leaderboard_week_number;
-	final String leaderboard_created_at;
+	int? uuid;
+	String? category;
+	final int year;
+	final int week;
+	final String createdAt;
 
 	Leaderboard({
-		this.id,
-		required this.leaderboard_uuid,
-		required this.leaderboard_type,
-		required this.leaderboard_year,
-		required this.leaderboard_week_number,
-		required this.leaderboard_created_at,
+		this.uuid,
+		this.category,
+		required this.year,
+		required this.week,
+		required this.createdAt,
 	});
 
 	Map<String, dynamic> toMap() {
 		return {
-			'id': id,
-			'leaderboard_uuid': leaderboard_uuid,
-			'leaderboard_type': leaderboard_type,
-			'leaderboard_year': leaderboard_year,
-			'leaderboard_week_number': leaderboard_week_number,
-			'leaderboard_created_at': leaderboard_created_at,
+			'uuid': uuid,
+			'category': category,
+			'year': year,
+			'week': week,
+			'created_at': createdAt,
 		};
 	}
 
 	factory Leaderboard.fromMap(Map<String, dynamic> map) {
 		return Leaderboard(
-			id: map['id']?.toInt() ?? 0,
-			leaderboard_uuid: map['leaderboard_uuid'] ?? '',
-			leaderboard_type: map['leaderboard_type'] ?? 'navigators',
-			leaderboard_year: map['leaderboard_year']?.toInt() ?? 0,
-			leaderboard_week_number: map['leaderboard_week_number']?.toInt() ?? 0,
-			leaderboard_created_at: map['leaderboard_created_at'] ?? '',
+			uuid: map['uuid'] ?? '',
+			category: map['category'] ?? 'navigators',
+			year: map['year']?.toInt() ?? 0,
+			week: map['week']?.toInt() ?? 0,
+			createdAt: map['created_at'] ?? '',
 		);
 	}
 
@@ -45,6 +41,6 @@ class Leaderboard {
 	
 	@override
 	String toString() {
-		return '{"id": $id, "leaderboard_uuid": "$leaderboard_uuid", "leaderboard_type": "$leaderboard_type", "leaderboard_year": $leaderboard_year, "leaderboard_week_number": $leaderboard_week_number, "leaderboard_created_at": "$leaderboard_created_at"}';
+		return '{"uuid": "$uuid", "category": "$category", "year": $year, "week": $week, "created_at": "$createdAt"}';
 	}
 }

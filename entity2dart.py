@@ -57,14 +57,17 @@ def attribute_parser(attribute, pk=False):
         parsed[2] = "int"
         parsed[3] = "not null"
         parsed[4] = "*"
+        if "uuid" in attribute:
+            parsed[2] = "String"
     
-    # uuid
     if attribute[0] == "#":
         parsed[0] += "#"
-        parsed[2] = "String"
+        parsed[2] = "int"
         parsed[3] = "not null"
         parsed[4] = "*"
         attribute = attribute[1:].strip()
+        if "uuid" in attribute:
+            parsed[2] = "String"
     
     if ":" not in attribute:
         parsed[1] = attribute.strip()
@@ -135,10 +138,9 @@ def attributes_to_dart(entity, attributes, destination):
     dart_data += "\n\t}"
     dart_data += "\n}"
     
+    columns = ", ".join(attributes["columns"])
     name = convert_to_snake_case(entity).strip()
-    
-    tables = ", ".join(attributes["table"])
-    print(f"\n\t\tawait db.execute(\n\t\t\t\"CREATE TABLE {name} ({tables})\",\n\t\t);")
+    print(f"\n\t\tawait db.execute(\n\t\t\t\"CREATE TABLE {name} ({columns})\",\n\t\t);")
     
     with open(f"{destination}/{name}.dart", mode="w+", encoding="utf-8") as file:
         file.write(dart_data)
@@ -159,18 +161,18 @@ def generate_utils(className):
     dart_data += "\r\n"
     dart_data += "\tFuture<void> update"+className+"("+className+" "+objectName+") async {\r\n"
     dart_data += "\t\tfinal db = await _databaseService.database;\r\n"
-    dart_data += "\t\tawait db.update('"+attribute+"', "+objectName+".toMap(), where: '"+attribute+"_uuid = ?', whereArgs: ["+objectName+"."+attribute+"_uuid]);\r\n"
+    dart_data += "\t\tawait db.update('"+attribute+"', "+objectName+".toMap(), where: 'uuid = ?', whereArgs: ["+objectName+".uuid]);\r\n"
     dart_data += "\t}\r\n"
     dart_data += "\r\n"
-    dart_data += "\tFuture<List<"+className+">> get"+className+"(id) async {\r\n"
+    dart_data += "\tFuture<List<"+className+">> get"+className+"(uuid) async {\r\n"
     dart_data += "\t\tfinal db = await _databaseService.database;\r\n"
-    dart_data += "\t\tfinal List<Map<String, dynamic>> maps = await db.query('"+attribute+"', where: '"+attribute+"_uuid = ?', whereArgs: [id]);\r\n"
+    dart_data += "\t\tfinal List<Map<String, dynamic>> maps = await db.query('"+attribute+"', where: 'uuid = ?', whereArgs: [uuid]);\r\n"
     dart_data += "\t\treturn List.generate(maps.length, (index) => "+className+".fromMap(maps[index]));\r\n"
     dart_data += "\t}\r\n"
     dart_data += "\r\n"
     dart_data += "\tFuture<List<"+className+">> get"+className+"s(int limit) async {\r\n"
     dart_data += "\t\tfinal db = await _databaseService.database;\r\n"
-    dart_data += "\t\tfinal List<Map<String, dynamic>> maps = await db.query('"+attribute+"', limit: limit, where: '"+attribute+"_soft_deleted=0');\r\n"
+    dart_data += "\t\tfinal List<Map<String, dynamic>> maps = await db.query('"+attribute+"', limit: limit, where: 'is_deleted=0');\r\n"
     dart_data += "\t\treturn List.generate(maps.length, (index) => "+className+".fromMap(maps[index]));\r\n"
     dart_data += "\t}"
     
@@ -196,11 +198,12 @@ def text_to_dart(source, destination):
         attribs["map"] = []
         attribs["factory"] = []
         attribs["string"] = []
-        attribs["table"] = []
+        attribs["columns"] = []
 
         attributes = re.split(r"\r*\n", entity)
         
         entity_name = attributes[0]
+        # print(entity_name)
         assert " " not in entity_name
         relations.append(entity_name)
 
@@ -224,22 +227,23 @@ def text_to_dart(source, destination):
                 elif dtype == "String":
                     default = "''"
             
-            attribs["map"].append(f"'{value}': {value},")
+            sk_value = convert_to_snake_case(value)
+            attribs["map"].append(f"'{sk_value}': {value},")
             
             if dtype == "String":
-                attribs["string"].append(f"\"{value}\": \"${value}\"")
+                attribs["string"].append(f"\"{sk_value}\": \"${value}\"")
             else:
-                attribs["string"].append(f"\"{value}\": ${value}")
+                attribs["string"].append(f"\"{sk_value}\": ${value}")
             
             to_int = ["", "?.toInt()"][int(dtype == "int")]
-            attribs["factory"].append(f"{value}: map['{value}']{to_int} ?? {default},")
+            attribs["factory"].append(f"{value}: map['{sk_value}']{to_int} ?? {default},")
             
             not_null = ["", "NOT NULL "][int(parsed[3] == "not null")]
             
             if "+" in parsed[0]:
                 attribs["class"].append(f"int? {value};")
                 attribs["constructor"].append(f"this.{value},")
-                attribs["table"].append(f"{value} INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL")
+                attribs["columns"].append(f"{sk_value} INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL")
                 continue
             
             default = parsed[5]
@@ -247,11 +251,11 @@ def text_to_dart(source, destination):
                 default = f"DEFAULT {default}"
             
             if dtype == "int":
-                attribs["table"].append(f"{value} INTEGER {not_null}{default}".strip())
+                attribs["columns"].append(f"{sk_value} INTEGER {not_null}{default}".strip())
             elif dtype == "double":
-                attribs["table"].append(f"{value} REAL {not_null}{default}".strip())
+                attribs["columns"].append(f"{sk_value} REAL {not_null}{default}".strip())
             elif dtype == "String":
-                attribs["table"].append(f"{value} TEXT {not_null}{default}".strip())
+                attribs["columns"].append(f"{sk_value} TEXT {not_null}{default}".strip())
             
             final = ["", "final"][int(parsed[4] == "*")]
             required1 = ["?", ""][int(parsed[3] == "not null")]    
