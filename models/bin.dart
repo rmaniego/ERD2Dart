@@ -4,8 +4,10 @@ class Bin {
 	final String uuid;
 	final String latitude;
 	final String longitude;
+	final String geoHash;
 	String? colorCode;
 	String? composition;
+	String approvalStatus;
 	int isSynchronized;
 	final String createdAt;
 
@@ -13,8 +15,10 @@ class Bin {
 		required this.uuid,
 		required this.latitude,
 		required this.longitude,
+		required this.geoHash,
 		this.colorCode,
 		this.composition,
+		required this.approvalStatus,
 		required this.isSynchronized,
 		required this.createdAt,
 	});
@@ -24,8 +28,10 @@ class Bin {
 			'uuid': uuid,
 			'latitude': latitude,
 			'longitude': longitude,
+			'geo_hash': geoHash,
 			'color_code': colorCode,
 			'composition': composition,
+			'approval_status': approvalStatus,
 			'is_synchronized': isSynchronized,
 			'created_at': createdAt,
 		};
@@ -36,8 +42,10 @@ class Bin {
 			uuid: map['uuid'] ?? '',
 			latitude: map['latitude'] ?? '',
 			longitude: map['longitude'] ?? '',
-			colorCode: map['color_code'] ?? 'blue',
-			composition: map['composition'] ?? 'non-biodegradable',
+			geoHash: map['geo_hash'] ?? '',
+			colorCode: map['color_code'] ?? 'Blue',
+			composition: map['composition'] ?? 'Non-biodegradable',
+			approvalStatus: map['approval_status'] ?? 'pending',
 			isSynchronized: map['is_synchronized']?.toInt() ?? 0,
 			createdAt: map['created_at'] ?? '',
 		);
@@ -49,6 +57,6 @@ class Bin {
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "latitude": "$latitude", "longitude": "$longitude", "color_code": "$colorCode", "composition": "$composition", "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "latitude": "$latitude", "longitude": "$longitude", "geo_hash": "$geoHash", "color_code": "$colorCode", "composition": "$composition", "approval_status": "$approvalStatus", "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
 	}
 }

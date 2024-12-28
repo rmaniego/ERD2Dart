@@ -7,8 +7,10 @@ class Track {
 	final int endTimestamp;
 	final double originLatitude;
 	final double originLongitude;
+	final String originGeoHash;
 	final double targetLatitude;
 	final double targetLongitude;
+	final String targetGeoHash;
 	final double distanceInMeters;
 	final double speedMetersPerSecond;
 	int isSynchronized;
@@ -21,8 +23,10 @@ class Track {
 		required this.endTimestamp,
 		required this.originLatitude,
 		required this.originLongitude,
+		required this.originGeoHash,
 		required this.targetLatitude,
 		required this.targetLongitude,
+		required this.targetGeoHash,
 		required this.distanceInMeters,
 		required this.speedMetersPerSecond,
 		required this.isSynchronized,
@@ -37,8 +41,10 @@ class Track {
 			'end_timestamp': endTimestamp,
 			'origin_latitude': originLatitude,
 			'origin_longitude': originLongitude,
+			'origin_geo_hash': originGeoHash,
 			'target_latitude': targetLatitude,
 			'target_longitude': targetLongitude,
+			'target_geo_hash': targetGeoHash,
 			'distance_in_meters': distanceInMeters,
 			'speed_meters_per_second': speedMetersPerSecond,
 			'is_synchronized': isSynchronized,
@@ -54,8 +60,10 @@ class Track {
 			endTimestamp: map['end_timestamp']?.toInt() ?? 0,
 			originLatitude: map['origin_latitude'] ?? 0.0,
 			originLongitude: map['origin_longitude'] ?? 0.0,
+			originGeoHash: map['origin_geo_hash'] ?? '',
 			targetLatitude: map['target_latitude'] ?? 0.0,
 			targetLongitude: map['target_longitude'] ?? 0.0,
+			targetGeoHash: map['target_geo_hash'] ?? '',
 			distanceInMeters: map['distance_in_meters'] ?? 0.0,
 			speedMetersPerSecond: map['speed_meters_per_second'] ?? 0.0,
 			isSynchronized: map['is_synchronized']?.toInt() ?? 0,
@@ -69,6 +77,6 @@ class Track {
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "disposal_uuid": "$disposalUuid", "set_timestamp": $setTimestamp, "end_timestamp": $endTimestamp, "origin_latitude": $originLatitude, "origin_longitude": $originLongitude, "target_latitude": $targetLatitude, "target_longitude": $targetLongitude, "distance_in_meters": $distanceInMeters, "speed_meters_per_second": $speedMetersPerSecond, "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "disposal_uuid": "$disposalUuid", "set_timestamp": $setTimestamp, "end_timestamp": $endTimestamp, "origin_latitude": $originLatitude, "origin_longitude": $originLongitude, "origin_geo_hash": "$originGeoHash", "target_latitude": $targetLatitude, "target_longitude": $targetLongitude, "target_geo_hash": "$targetGeoHash", "distance_in_meters": $distanceInMeters, "speed_meters_per_second": $speedMetersPerSecond, "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
 	}
 }
