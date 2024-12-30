@@ -63,4 +63,24 @@ Award
 # leaderboardUuid : string not null *
 # accountUuid : string not null *
 points : int not null *
-createdAt : string not null * 
+createdAt : string not null *
+---
+StreetMap
++ uuid : string not null *
+version : string not null *
+isCurrent : int not null
+isSynchronized : int not null = 0
+createdAt : string not null *
+---
+Node
++ uuid : string not null *
+# streetMapUuid : string not null *
+originLatitude : double not null *
+originLongitude : double not null *
+originGeoHash : string not null *
+targetLatitude : double not null *
+targetLongitude : double not null *
+targetGeoHash : string not null *
+distanceInMeters : double not null *
+isSynchronized : int not null = 0
+createdAt : string not null *
