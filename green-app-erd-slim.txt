@@ -82,5 +82,6 @@ targetLatitude : double not null *
 targetLongitude : double not null *
 targetGeoHash : string not null *
 distanceInMeters : double not null *
+isDeleted : int = 0
 isSynchronized : int not null = 0
 createdAt : string not null *
