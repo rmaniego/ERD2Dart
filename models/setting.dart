@@ -2,30 +2,32 @@ import 'dart:convert';
 
 class Setting {
 	final String uuid;
-	final int deviceUuid;
+	final String deviceUuid;
 	int? keepScreenOn;
-	String? deviceLastSynchronizedAt;
-	String? binLastSynchronizedAt;
-	String? deviceBinLastSynchronizedAt;
-	String? mapLastSynchronizedAt;
-	String? edgeLastSynchronizedAt;
-	String? disposalLastSynchronizedAt;
-	String? trackLastSynchronizedAt;
-	String? settingLastSynchronizedAt;
+	String? deviceCutoffMillis;
+	String? binCutoffMillis;
+	String? deviceBinCutoffMillis;
+	String? streetMapCutoffMillis;
+	String? edgeCutoffMillis;
+	String? disposalCutoffMillis;
+	String? trackCutoffMillis;
+	String? landmarkCutoffMillis;
+	String? settingCutoffMillis;
 	final String createdAt;
 
 	Setting({
 		required this.uuid,
 		required this.deviceUuid,
 		this.keepScreenOn,
-		this.deviceLastSynchronizedAt,
-		this.binLastSynchronizedAt,
-		this.deviceBinLastSynchronizedAt,
-		this.mapLastSynchronizedAt,
-		this.edgeLastSynchronizedAt,
-		this.disposalLastSynchronizedAt,
-		this.trackLastSynchronizedAt,
-		this.settingLastSynchronizedAt,
+		this.deviceCutoffMillis,
+		this.binCutoffMillis,
+		this.deviceBinCutoffMillis,
+		this.streetMapCutoffMillis,
+		this.edgeCutoffMillis,
+		this.disposalCutoffMillis,
+		this.trackCutoffMillis,
+		this.landmarkCutoffMillis,
+		this.settingCutoffMillis,
 		required this.createdAt,
 	});
 
@@ -34,14 +36,15 @@ class Setting {
 			'uuid': uuid,
 			'device_uuid': deviceUuid,
 			'keep_screen_on': keepScreenOn,
-			'device_last_synchronized_at': deviceLastSynchronizedAt,
-			'bin_last_synchronized_at': binLastSynchronizedAt,
-			'device_bin_last_synchronized_at': deviceBinLastSynchronizedAt,
-			'map_last_synchronized_at': mapLastSynchronizedAt,
-			'edge_last_synchronized_at': edgeLastSynchronizedAt,
-			'disposal_last_synchronized_at': disposalLastSynchronizedAt,
-			'track_last_synchronized_at': trackLastSynchronizedAt,
-			'setting_last_synchronized_at': settingLastSynchronizedAt,
+			'device_cutoff_millis': deviceCutoffMillis,
+			'bin_cutoff_millis': binCutoffMillis,
+			'device_bin_cutoff_millis': deviceBinCutoffMillis,
+			'street_map_cutoff_millis': streetMapCutoffMillis,
+			'edge_cutoff_millis': edgeCutoffMillis,
+			'disposal_cutoff_millis': disposalCutoffMillis,
+			'track_cutoff_millis': trackCutoffMillis,
+			'landmark_cutoff_millis': landmarkCutoffMillis,
+			'setting_cutoff_millis': settingCutoffMillis,
 			'created_at': createdAt,
 		};
 	}
@@ -49,16 +52,17 @@ class Setting {
 	factory Setting.fromMap(Map<String, dynamic> map) {
 		return Setting(
 			uuid: map['uuid'] ?? '',
-			deviceUuid: map['device_uuid']?.toInt() ?? 0,
+			deviceUuid: map['device_uuid'] ?? '',
 			keepScreenOn: map['keep_screen_on']?.toInt() ?? 0,
-			deviceLastSynchronizedAt: map['device_last_synchronized_at'] ?? '',
-			binLastSynchronizedAt: map['bin_last_synchronized_at'] ?? '',
-			deviceBinLastSynchronizedAt: map['device_bin_last_synchronized_at'] ?? '',
-			mapLastSynchronizedAt: map['map_last_synchronized_at'] ?? '',
-			edgeLastSynchronizedAt: map['edge_last_synchronized_at'] ?? '',
-			disposalLastSynchronizedAt: map['disposal_last_synchronized_at'] ?? '',
-			trackLastSynchronizedAt: map['track_last_synchronized_at'] ?? '',
-			settingLastSynchronizedAt: map['setting_last_synchronized_at'] ?? '',
+			deviceCutoffMillis: map['device_cutoff_millis'] ?? '',
+			binCutoffMillis: map['bin_cutoff_millis'] ?? '',
+			deviceBinCutoffMillis: map['device_bin_cutoff_millis'] ?? '',
+			streetMapCutoffMillis: map['street_map_cutoff_millis'] ?? '',
+			edgeCutoffMillis: map['edge_cutoff_millis'] ?? '',
+			disposalCutoffMillis: map['disposal_cutoff_millis'] ?? '',
+			trackCutoffMillis: map['track_cutoff_millis'] ?? '',
+			landmarkCutoffMillis: map['landmark_cutoff_millis'] ?? '',
+			settingCutoffMillis: map['setting_cutoff_millis'] ?? '',
 			createdAt: map['created_at'] ?? '',
 		);
 	}
@@ -69,6 +73,6 @@ class Setting {
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "device_uuid": $deviceUuid, "keep_screen_on": $keepScreenOn, "device_last_synchronized_at": "$deviceLastSynchronizedAt", "bin_last_synchronized_at": "$binLastSynchronizedAt", "device_bin_last_synchronized_at": "$deviceBinLastSynchronizedAt", "map_last_synchronized_at": "$mapLastSynchronizedAt", "edge_last_synchronized_at": "$edgeLastSynchronizedAt", "disposal_last_synchronized_at": "$disposalLastSynchronizedAt", "track_last_synchronized_at": "$trackLastSynchronizedAt", "setting_last_synchronized_at": "$settingLastSynchronizedAt", "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "device_uuid": "$deviceUuid", "keep_screen_on": $keepScreenOn, "device_cutoff_millis": "$deviceCutoffMillis", "bin_cutoff_millis": "$binCutoffMillis", "device_bin_cutoff_millis": "$deviceBinCutoffMillis", "street_map_cutoff_millis": "$streetMapCutoffMillis", "edge_cutoff_millis": "$edgeCutoffMillis", "disposal_cutoff_millis": "$disposalCutoffMillis", "track_cutoff_millis": "$trackCutoffMillis", "landmark_cutoff_millis": "$landmarkCutoffMillis", "setting_cutoff_millis": "$settingCutoffMillis", "created_at": "$createdAt"}';
 	}
 }

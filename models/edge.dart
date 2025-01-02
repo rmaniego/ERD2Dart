@@ -2,7 +2,7 @@ import 'dart:convert';
 
 class Edge {
 	final String uuid;
-	final String mapUuid;
+	final String streetMapUuid;
 	final double originLatitude;
 	final double originLongitude;
 	final String originGeoHash;
@@ -16,7 +16,7 @@ class Edge {
 
 	Edge({
 		required this.uuid,
-		required this.mapUuid,
+		required this.streetMapUuid,
 		required this.originLatitude,
 		required this.originLongitude,
 		required this.originGeoHash,
@@ -32,7 +32,7 @@ class Edge {
 	Map<String, dynamic> toMap() {
 		return {
 			'uuid': uuid,
-			'map_uuid': mapUuid,
+			'street_map_uuid': streetMapUuid,
 			'origin_latitude': originLatitude,
 			'origin_longitude': originLongitude,
 			'origin_geo_hash': originGeoHash,
@@ -49,7 +49,7 @@ class Edge {
 	factory Edge.fromMap(Map<String, dynamic> map) {
 		return Edge(
 			uuid: map['uuid'] ?? '',
-			mapUuid: map['map_uuid'] ?? '',
+			streetMapUuid: map['street_map_uuid'] ?? '',
 			originLatitude: map['origin_latitude'] ?? 0.0,
 			originLongitude: map['origin_longitude'] ?? 0.0,
 			originGeoHash: map['origin_geo_hash'] ?? '',
@@ -69,6 +69,6 @@ class Edge {
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "map_uuid": "$mapUuid", "origin_latitude": $originLatitude, "origin_longitude": $originLongitude, "origin_geo_hash": "$originGeoHash", "target_latitude": $targetLatitude, "target_longitude": $targetLongitude, "target_geo_hash": "$targetGeoHash", "distance_in_meters": $distanceInMeters, "is_deleted": $isDeleted, "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "street_map_uuid": "$streetMapUuid", "origin_latitude": $originLatitude, "origin_longitude": $originLongitude, "origin_geo_hash": "$originGeoHash", "target_latitude": $targetLatitude, "target_longitude": $targetLongitude, "target_geo_hash": "$targetGeoHash", "distance_in_meters": $distanceInMeters, "is_deleted": $isDeleted, "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
 	}
 }
