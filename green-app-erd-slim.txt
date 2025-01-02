@@ -1,9 +1,11 @@
-Account
+Device
 + uuid : string not null *
 apiId : string
 apiName : string
 apiEmail : string
 apiPhotoUrl : string
+isPublic : int = 0
+isResticted : int = 0
 isSynchronized : int not null = 0
 createdAt : string not null *
 ---
@@ -18,17 +20,17 @@ approvalStatus : string not null = 'pending'
 isSynchronized : int not null = 0
 createdAt : string not null *
 ---
-AccountBin
+DeviceBin
 + uuid : string not null *
-# accountUuid : string not null *
+# deviceUuid : string not null *
 # binUuid : string not null *
-status : string = 'functional'
+condition : string = 'Functional'
 isSynchronized : int not null = 0
 createdAt : string not null *
 ---
 Disposal
 + uuid : string not null *
-# accountUuid : string not null *
+# deviceUuid : string not null *
 # binUuid : string not null *
 status : string = 'started'
 isDeleted : int = 0
@@ -61,20 +63,20 @@ createdAt : string not null *
 Award
 + uuid : string not null *
 # leaderboardUuid : string not null *
-# accountUuid : string not null *
+# deviceUuid : string not null *
 points : int not null *
 createdAt : string not null *
 ---
 StreetMap
 + uuid : string not null *
 version : string not null *
-isCurrent : int not null
+isCurrent : int not null = 0
 isSynchronized : int not null = 0
 createdAt : string not null *
 ---
-Node
+Edge
 + uuid : string not null *
-# streetMapUuid : string not null *
+# mapUuid : string not null *
 originLatitude : double not null *
 originLongitude : double not null *
 originGeoHash : string not null *
@@ -84,4 +86,18 @@ targetGeoHash : string not null *
 distanceInMeters : double not null *
 isDeleted : int = 0
 isSynchronized : int not null = 0
+createdAt : string not null *
+---
+Setting
++ uuid
+# deviceUuid
+keepScreenOn : int = 0
+deviceLastSynchronizedAt : string
+binLastSynchronizedAt : string
+deviceBinLastSynchronizedAt : string
+mapLastSynchronizedAt : string
+edgeLastSynchronizedAt : string
+disposalLastSynchronizedAt : string
+trackLastSynchronizedAt : string
+settingLastSynchronizedAt : string
 createdAt : string not null *

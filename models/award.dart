@@ -3,14 +3,14 @@ import 'dart:convert';
 class Award {
 	final String uuid;
 	final String leaderboardUuid;
-	final String accountUuid;
+	final String deviceUuid;
 	final int points;
 	final String createdAt;
 
 	Award({
 		required this.uuid,
 		required this.leaderboardUuid,
-		required this.accountUuid,
+		required this.deviceUuid,
 		required this.points,
 		required this.createdAt,
 	});
@@ -19,7 +19,7 @@ class Award {
 		return {
 			'uuid': uuid,
 			'leaderboard_uuid': leaderboardUuid,
-			'account_uuid': accountUuid,
+			'device_uuid': deviceUuid,
 			'points': points,
 			'created_at': createdAt,
 		};
@@ -29,7 +29,7 @@ class Award {
 		return Award(
 			uuid: map['uuid'] ?? '',
 			leaderboardUuid: map['leaderboard_uuid'] ?? '',
-			accountUuid: map['account_uuid'] ?? '',
+			deviceUuid: map['device_uuid'] ?? '',
 			points: map['points']?.toInt() ?? 0,
 			createdAt: map['created_at'] ?? '',
 		);
@@ -41,6 +41,6 @@ class Award {
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "leaderboard_uuid": "$leaderboardUuid", "account_uuid": "$accountUuid", "points": $points, "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "leaderboard_uuid": "$leaderboardUuid", "device_uuid": "$deviceUuid", "points": $points, "created_at": "$createdAt"}';
 	}
 }

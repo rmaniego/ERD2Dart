@@ -2,7 +2,7 @@ import 'dart:convert';
 
 class Disposal {
 	final String uuid;
-	final String accountUuid;
+	final String deviceUuid;
 	final String binUuid;
 	String? status;
 	int? isDeleted;
@@ -11,7 +11,7 @@ class Disposal {
 
 	Disposal({
 		required this.uuid,
-		required this.accountUuid,
+		required this.deviceUuid,
 		required this.binUuid,
 		this.status,
 		this.isDeleted,
@@ -22,7 +22,7 @@ class Disposal {
 	Map<String, dynamic> toMap() {
 		return {
 			'uuid': uuid,
-			'account_uuid': accountUuid,
+			'device_uuid': deviceUuid,
 			'bin_uuid': binUuid,
 			'status': status,
 			'is_deleted': isDeleted,
@@ -34,7 +34,7 @@ class Disposal {
 	factory Disposal.fromMap(Map<String, dynamic> map) {
 		return Disposal(
 			uuid: map['uuid'] ?? '',
-			accountUuid: map['account_uuid'] ?? '',
+			deviceUuid: map['device_uuid'] ?? '',
 			binUuid: map['bin_uuid'] ?? '',
 			status: map['status'] ?? 'started',
 			isDeleted: map['is_deleted']?.toInt() ?? 0,
@@ -49,6 +49,6 @@ class Disposal {
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "account_uuid": "$accountUuid", "bin_uuid": "$binUuid", "status": "$status", "is_deleted": $isDeleted, "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "device_uuid": "$deviceUuid", "bin_uuid": "$binUuid", "status": "$status", "is_deleted": $isDeleted, "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
 	}
 }

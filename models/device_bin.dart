@@ -1,18 +1,18 @@
 import 'dart:convert';
 
-class AccountBin {
+class DeviceBin {
 	final String uuid;
-	final String accountUuid;
+	final String deviceUuid;
 	final String binUuid;
-	String? status;
+	String? condition;
 	int isSynchronized;
 	final String createdAt;
 
-	AccountBin({
+	DeviceBin({
 		required this.uuid,
-		required this.accountUuid,
+		required this.deviceUuid,
 		required this.binUuid,
-		this.status,
+		this.condition,
 		required this.isSynchronized,
 		required this.createdAt,
 	});
@@ -20,20 +20,20 @@ class AccountBin {
 	Map<String, dynamic> toMap() {
 		return {
 			'uuid': uuid,
-			'account_uuid': accountUuid,
+			'device_uuid': deviceUuid,
 			'bin_uuid': binUuid,
-			'status': status,
+			'condition': condition,
 			'is_synchronized': isSynchronized,
 			'created_at': createdAt,
 		};
 	}
 
-	factory AccountBin.fromMap(Map<String, dynamic> map) {
-		return AccountBin(
+	factory DeviceBin.fromMap(Map<String, dynamic> map) {
+		return DeviceBin(
 			uuid: map['uuid'] ?? '',
-			accountUuid: map['account_uuid'] ?? '',
+			deviceUuid: map['device_uuid'] ?? '',
 			binUuid: map['bin_uuid'] ?? '',
-			status: map['status'] ?? 'functional',
+			condition: map['condition'] ?? 'Functional',
 			isSynchronized: map['is_synchronized']?.toInt() ?? 0,
 			createdAt: map['created_at'] ?? '',
 		);
@@ -41,10 +41,10 @@ class AccountBin {
 
 	String toJson() => json.encode(toMap());
 
-	factory AccountBin.fromJson(String source) => AccountBin.fromMap(json.decode(source));
+	factory DeviceBin.fromJson(String source) => DeviceBin.fromMap(json.decode(source));
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "account_uuid": "$accountUuid", "bin_uuid": "$binUuid", "status": "$status", "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "device_uuid": "$deviceUuid", "bin_uuid": "$binUuid", "condition": "$condition", "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
 	}
 }

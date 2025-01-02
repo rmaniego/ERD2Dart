@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-class Node {
+class Edge {
 	final String uuid;
-	final String streetMapUuid;
+	final String mapUuid;
 	final double originLatitude;
 	final double originLongitude;
 	final String originGeoHash;
@@ -14,9 +14,9 @@ class Node {
 	int isSynchronized;
 	final String createdAt;
 
-	Node({
+	Edge({
 		required this.uuid,
-		required this.streetMapUuid,
+		required this.mapUuid,
 		required this.originLatitude,
 		required this.originLongitude,
 		required this.originGeoHash,
@@ -32,7 +32,7 @@ class Node {
 	Map<String, dynamic> toMap() {
 		return {
 			'uuid': uuid,
-			'street_map_uuid': streetMapUuid,
+			'map_uuid': mapUuid,
 			'origin_latitude': originLatitude,
 			'origin_longitude': originLongitude,
 			'origin_geo_hash': originGeoHash,
@@ -46,10 +46,10 @@ class Node {
 		};
 	}
 
-	factory Node.fromMap(Map<String, dynamic> map) {
-		return Node(
+	factory Edge.fromMap(Map<String, dynamic> map) {
+		return Edge(
 			uuid: map['uuid'] ?? '',
-			streetMapUuid: map['street_map_uuid'] ?? '',
+			mapUuid: map['map_uuid'] ?? '',
 			originLatitude: map['origin_latitude'] ?? 0.0,
 			originLongitude: map['origin_longitude'] ?? 0.0,
 			originGeoHash: map['origin_geo_hash'] ?? '',
@@ -65,10 +65,10 @@ class Node {
 
 	String toJson() => json.encode(toMap());
 
-	factory Node.fromJson(String source) => Node.fromMap(json.decode(source));
+	factory Edge.fromJson(String source) => Edge.fromMap(json.decode(source));
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "street_map_uuid": "$streetMapUuid", "origin_latitude": $originLatitude, "origin_longitude": $originLongitude, "origin_geo_hash": "$originGeoHash", "target_latitude": $targetLatitude, "target_longitude": $targetLongitude, "target_geo_hash": "$targetGeoHash", "distance_in_meters": $distanceInMeters, "is_deleted": $isDeleted, "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "map_uuid": "$mapUuid", "origin_latitude": $originLatitude, "origin_longitude": $originLongitude, "origin_geo_hash": "$originGeoHash", "target_latitude": $targetLatitude, "target_longitude": $targetLongitude, "target_geo_hash": "$targetGeoHash", "distance_in_meters": $distanceInMeters, "is_deleted": $isDeleted, "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
 	}
 }
