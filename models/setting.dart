@@ -10,7 +10,6 @@ class Setting {
 	String? streetMapCutoffMillis;
 	String? edgeCutoffMillis;
 	String? disposalCutoffMillis;
-	String? trackCutoffMillis;
 	String? landmarkCutoffMillis;
 	String? settingCutoffMillis;
 	final String createdAt;
@@ -25,7 +24,6 @@ class Setting {
 		this.streetMapCutoffMillis,
 		this.edgeCutoffMillis,
 		this.disposalCutoffMillis,
-		this.trackCutoffMillis,
 		this.landmarkCutoffMillis,
 		this.settingCutoffMillis,
 		required this.createdAt,
@@ -42,7 +40,6 @@ class Setting {
 			'street_map_cutoff_millis': streetMapCutoffMillis,
 			'edge_cutoff_millis': edgeCutoffMillis,
 			'disposal_cutoff_millis': disposalCutoffMillis,
-			'track_cutoff_millis': trackCutoffMillis,
 			'landmark_cutoff_millis': landmarkCutoffMillis,
 			'setting_cutoff_millis': settingCutoffMillis,
 			'created_at': createdAt,
@@ -60,7 +57,6 @@ class Setting {
 			streetMapCutoffMillis: map['street_map_cutoff_millis'] ?? '',
 			edgeCutoffMillis: map['edge_cutoff_millis'] ?? '',
 			disposalCutoffMillis: map['disposal_cutoff_millis'] ?? '',
-			trackCutoffMillis: map['track_cutoff_millis'] ?? '',
 			landmarkCutoffMillis: map['landmark_cutoff_millis'] ?? '',
 			settingCutoffMillis: map['setting_cutoff_millis'] ?? '',
 			createdAt: map['created_at'] ?? '',
@@ -73,6 +69,6 @@ class Setting {
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "device_uuid": "$deviceUuid", "keep_screen_on": $keepScreenOn, "device_cutoff_millis": "$deviceCutoffMillis", "bin_cutoff_millis": "$binCutoffMillis", "device_bin_cutoff_millis": "$deviceBinCutoffMillis", "street_map_cutoff_millis": "$streetMapCutoffMillis", "edge_cutoff_millis": "$edgeCutoffMillis", "disposal_cutoff_millis": "$disposalCutoffMillis", "track_cutoff_millis": "$trackCutoffMillis", "landmark_cutoff_millis": "$landmarkCutoffMillis", "setting_cutoff_millis": "$settingCutoffMillis", "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "device_uuid": "$deviceUuid", "keep_screen_on": $keepScreenOn, "device_cutoff_millis": "$deviceCutoffMillis", "bin_cutoff_millis": "$binCutoffMillis", "device_bin_cutoff_millis": "$deviceBinCutoffMillis", "street_map_cutoff_millis": "$streetMapCutoffMillis", "edge_cutoff_millis": "$edgeCutoffMillis", "disposal_cutoff_millis": "$disposalCutoffMillis", "landmark_cutoff_millis": "$landmarkCutoffMillis", "setting_cutoff_millis": "$settingCutoffMillis", "created_at": "$createdAt"}';
 	}
 }

@@ -37,22 +37,6 @@ isDeleted : int = 0
 isSynchronized : int not null = 0
 createdAt : string not null *
 ---
-Track
-+ uuid : string not null *
-# disposalUuid : string not null *
-setTimestamp : int not null *
-endTimestamp : int not null *
-originLatitude : double not null *
-originLongitude : double not null *
-originGeoHash : string not null *
-targetLatitude : double not null *
-targetLongitude : double not null *
-targetGeoHash : string not null *
-distanceInMeters : double not null *
-speedMetersPerSecond : double not null *
-isSynchronized : int not null = 0
-createdAt : string not null *
----
 Leaderboard
 + uuid : string not null *
 category : string = 'navigators'
@@ -76,7 +60,7 @@ createdAt : string not null *
 ---
 Edge
 + uuid : string not null *
-# mapUuid : string not null *
+# streetMapUuid : string not null *
 originLatitude : double not null *
 originLongitude : double not null *
 originGeoHash : string not null *
@@ -88,16 +72,26 @@ isDeleted : int = 0
 isSynchronized : int not null = 0
 createdAt : string not null *
 ---
-Setting
-+ uuid
-# deviceUuid
-keepScreenOn : int = 0
-deviceLastSynchronizedAt : string
-binLastSynchronizedAt : string
-deviceBinLastSynchronizedAt : string
-mapLastSynchronizedAt : string
-edgeLastSynchronizedAt : string
-disposalLastSynchronizedAt : string
-trackLastSynchronizedAt : string
-settingLastSynchronizedAt : string
+Landmark
++ uuid : string not null *
+name : string not null
+latitude : string not null *
+longitude : string not null *
+geoHash : string not null *
+isDeleted : int = 0
+isSynchronized : int not null = 0
 createdAt : string not null *
+---
+Setting
++ uuid : string not null *
+# deviceUuid : string not null *
+keepScreenOn : int = 0
+deviceCutoffMillis : string
+binCutoffMillis : string
+deviceBinCutoffMillis : string
+streetMapCutoffMillis : string
+edgeCutoffMillis : string
+disposalCutoffMillis : string
+landmarkCutoffMillis : string
+settingCutoffMillis : string
+createdAt : string not null * 
