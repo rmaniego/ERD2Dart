@@ -5,7 +5,7 @@ apiName : string
 apiEmail : string
 apiPhotoUrl : string
 isPublic : int = 0
-isResticted : int = 0
+isRestricted : int = 0
 isSynchronized : int not null = 0
 createdAt : string not null *
 ---
@@ -41,7 +41,7 @@ Leaderboard
 + uuid : string not null *
 category : string = 'navigators'
 year : int not null *
-week : int not null *
+weekday : int not null *
 createdAt : string not null *
 ---
 Award
@@ -86,12 +86,13 @@ Setting
 + uuid : string not null *
 # deviceUuid : string not null *
 keepScreenOn : int = 0
-deviceCutoffMillis : string
-binCutoffMillis : string
-deviceBinCutoffMillis : string
-streetMapCutoffMillis : string
-edgeCutoffMillis : string
-disposalCutoffMillis : string
-landmarkCutoffMillis : string
-settingCutoffMillis : string
+useLargeTexts : int = 0
+deviceCutoff : string
+binCutoff : string
+deviceBinCutoff : string
+streetMapCutoff : string
+edgeCutoff : string
+disposalCutoff : string
+landmarkCutoff : string
+settingCutoff : string
 createdAt : string not null * 

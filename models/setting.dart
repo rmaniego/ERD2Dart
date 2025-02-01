@@ -4,28 +4,30 @@ class Setting {
 	final String uuid;
 	final String deviceUuid;
 	int? keepScreenOn;
-	String? deviceCutoffMillis;
-	String? binCutoffMillis;
-	String? deviceBinCutoffMillis;
-	String? streetMapCutoffMillis;
-	String? edgeCutoffMillis;
-	String? disposalCutoffMillis;
-	String? landmarkCutoffMillis;
-	String? settingCutoffMillis;
+	int? useLargeTexts;
+	String? deviceCutoff;
+	String? binCutoff;
+	String? deviceBinCutoff;
+	String? streetMapCutoff;
+	String? edgeCutoff;
+	String? disposalCutoff;
+	String? landmarkCutoff;
+	String? settingCutoff;
 	final String createdAt;
 
 	Setting({
 		required this.uuid,
 		required this.deviceUuid,
 		this.keepScreenOn,
-		this.deviceCutoffMillis,
-		this.binCutoffMillis,
-		this.deviceBinCutoffMillis,
-		this.streetMapCutoffMillis,
-		this.edgeCutoffMillis,
-		this.disposalCutoffMillis,
-		this.landmarkCutoffMillis,
-		this.settingCutoffMillis,
+		this.useLargeTexts,
+		this.deviceCutoff,
+		this.binCutoff,
+		this.deviceBinCutoff,
+		this.streetMapCutoff,
+		this.edgeCutoff,
+		this.disposalCutoff,
+		this.landmarkCutoff,
+		this.settingCutoff,
 		required this.createdAt,
 	});
 
@@ -34,14 +36,15 @@ class Setting {
 			'uuid': uuid,
 			'device_uuid': deviceUuid,
 			'keep_screen_on': keepScreenOn,
-			'device_cutoff_millis': deviceCutoffMillis,
-			'bin_cutoff_millis': binCutoffMillis,
-			'device_bin_cutoff_millis': deviceBinCutoffMillis,
-			'street_map_cutoff_millis': streetMapCutoffMillis,
-			'edge_cutoff_millis': edgeCutoffMillis,
-			'disposal_cutoff_millis': disposalCutoffMillis,
-			'landmark_cutoff_millis': landmarkCutoffMillis,
-			'setting_cutoff_millis': settingCutoffMillis,
+			'use_large_texts': useLargeTexts,
+			'device_cutoff': deviceCutoff,
+			'bin_cutoff': binCutoff,
+			'device_bin_cutoff': deviceBinCutoff,
+			'street_map_cutoff': streetMapCutoff,
+			'edge_cutoff': edgeCutoff,
+			'disposal_cutoff': disposalCutoff,
+			'landmark_cutoff': landmarkCutoff,
+			'setting_cutoff': settingCutoff,
 			'created_at': createdAt,
 		};
 	}
@@ -51,14 +54,15 @@ class Setting {
 			uuid: map['uuid'] ?? '',
 			deviceUuid: map['device_uuid'] ?? '',
 			keepScreenOn: map['keep_screen_on']?.toInt() ?? 0,
-			deviceCutoffMillis: map['device_cutoff_millis'] ?? '',
-			binCutoffMillis: map['bin_cutoff_millis'] ?? '',
-			deviceBinCutoffMillis: map['device_bin_cutoff_millis'] ?? '',
-			streetMapCutoffMillis: map['street_map_cutoff_millis'] ?? '',
-			edgeCutoffMillis: map['edge_cutoff_millis'] ?? '',
-			disposalCutoffMillis: map['disposal_cutoff_millis'] ?? '',
-			landmarkCutoffMillis: map['landmark_cutoff_millis'] ?? '',
-			settingCutoffMillis: map['setting_cutoff_millis'] ?? '',
+			useLargeTexts: map['use_large_texts']?.toInt() ?? 0,
+			deviceCutoff: map['device_cutoff'] ?? '',
+			binCutoff: map['bin_cutoff'] ?? '',
+			deviceBinCutoff: map['device_bin_cutoff'] ?? '',
+			streetMapCutoff: map['street_map_cutoff'] ?? '',
+			edgeCutoff: map['edge_cutoff'] ?? '',
+			disposalCutoff: map['disposal_cutoff'] ?? '',
+			landmarkCutoff: map['landmark_cutoff'] ?? '',
+			settingCutoff: map['setting_cutoff'] ?? '',
 			createdAt: map['created_at'] ?? '',
 		);
 	}
@@ -69,6 +73,6 @@ class Setting {
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "device_uuid": "$deviceUuid", "keep_screen_on": $keepScreenOn, "device_cutoff_millis": "$deviceCutoffMillis", "bin_cutoff_millis": "$binCutoffMillis", "device_bin_cutoff_millis": "$deviceBinCutoffMillis", "street_map_cutoff_millis": "$streetMapCutoffMillis", "edge_cutoff_millis": "$edgeCutoffMillis", "disposal_cutoff_millis": "$disposalCutoffMillis", "landmark_cutoff_millis": "$landmarkCutoffMillis", "setting_cutoff_millis": "$settingCutoffMillis", "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "device_uuid": "$deviceUuid", "keep_screen_on": $keepScreenOn, "use_large_texts": $useLargeTexts, "device_cutoff": "$deviceCutoff", "bin_cutoff": "$binCutoff", "device_bin_cutoff": "$deviceBinCutoff", "street_map_cutoff": "$streetMapCutoff", "edge_cutoff": "$edgeCutoff", "disposal_cutoff": "$disposalCutoff", "landmark_cutoff": "$landmarkCutoff", "setting_cutoff": "$settingCutoff", "created_at": "$createdAt"}';
 	}
 }

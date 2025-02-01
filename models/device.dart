@@ -7,7 +7,7 @@ class Device {
 	String? apiEmail;
 	String? apiPhotoUrl;
 	int? isPublic;
-	int? isResticted;
+	int? isRestricted;
 	int isSynchronized;
 	final String createdAt;
 
@@ -18,7 +18,7 @@ class Device {
 		this.apiEmail,
 		this.apiPhotoUrl,
 		this.isPublic,
-		this.isResticted,
+		this.isRestricted,
 		required this.isSynchronized,
 		required this.createdAt,
 	});
@@ -31,7 +31,7 @@ class Device {
 			'api_email': apiEmail,
 			'api_photo_url': apiPhotoUrl,
 			'is_public': isPublic,
-			'is_resticted': isResticted,
+			'is_restricted': isRestricted,
 			'is_synchronized': isSynchronized,
 			'created_at': createdAt,
 		};
@@ -45,7 +45,7 @@ class Device {
 			apiEmail: map['api_email'] ?? '',
 			apiPhotoUrl: map['api_photo_url'] ?? '',
 			isPublic: map['is_public']?.toInt() ?? 0,
-			isResticted: map['is_resticted']?.toInt() ?? 0,
+			isRestricted: map['is_restricted']?.toInt() ?? 0,
 			isSynchronized: map['is_synchronized']?.toInt() ?? 0,
 			createdAt: map['created_at'] ?? '',
 		);
@@ -57,6 +57,6 @@ class Device {
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "api_id": "$apiId", "api_name": "$apiName", "api_email": "$apiEmail", "api_photo_url": "$apiPhotoUrl", "is_public": $isPublic, "is_resticted": $isResticted, "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "api_id": "$apiId", "api_name": "$apiName", "api_email": "$apiEmail", "api_photo_url": "$apiPhotoUrl", "is_public": $isPublic, "is_restricted": $isRestricted, "is_synchronized": $isSynchronized, "created_at": "$createdAt"}';
 	}
 }

@@ -4,14 +4,14 @@ class Leaderboard {
 	final String uuid;
 	String? category;
 	final int year;
-	final int week;
+	final int weekday;
 	final String createdAt;
 
 	Leaderboard({
 		required this.uuid,
 		this.category,
 		required this.year,
-		required this.week,
+		required this.weekday,
 		required this.createdAt,
 	});
 
@@ -20,7 +20,7 @@ class Leaderboard {
 			'uuid': uuid,
 			'category': category,
 			'year': year,
-			'week': week,
+			'weekday': weekday,
 			'created_at': createdAt,
 		};
 	}
@@ -30,7 +30,7 @@ class Leaderboard {
 			uuid: map['uuid'] ?? '',
 			category: map['category'] ?? 'navigators',
 			year: map['year']?.toInt() ?? 0,
-			week: map['week']?.toInt() ?? 0,
+			weekday: map['weekday']?.toInt() ?? 0,
 			createdAt: map['created_at'] ?? '',
 		);
 	}
@@ -41,6 +41,6 @@ class Leaderboard {
 	
 	@override
 	String toString() {
-		return '{"uuid": "$uuid", "category": "$category", "year": $year, "week": $week, "created_at": "$createdAt"}';
+		return '{"uuid": "$uuid", "category": "$category", "year": $year, "weekday": $weekday, "created_at": "$createdAt"}';
 	}
 }
